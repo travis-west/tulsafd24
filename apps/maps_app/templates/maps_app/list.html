@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap stuff -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    
+    {% load static %}      
+    <link rel="stylesheet" href="{% static 'oscn_app/css/style.css' %}">
+    <title>TFD 24</title>
+</head>
+
+<div class="container">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Tulsa Fire Department - Last 24 Hours of Activity</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">Map</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/list">List</a>
+            </li>
+        </ul>
+    </nav>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Response Date</th>
+                <th scope="col">Incident ID</th>
+                <th scope="col">Problem</th>
+                <th scope="col">Address</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for dispatch in dispatches %}
+                    <tr>
+                        <td>{{ dispatch.ResponseDate }}</td>
+                        <td>{{ dispatch.IncidentNumber }}</td>
+                        <td>{{ dispatch.Problem }}</td>
+                        <td>{{ dispatch.Address }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+    </table>      
+</div>
+</body>
+</html>
